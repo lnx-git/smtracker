@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Round Results: {{ round.ident }}</h1>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Robot</th>
+        <th>Total Robot Points</th>
+        <th>Total Opponents Points</th>
+        <th>Round Robot Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in results %}
+      <tr>
+        <td><strong>{{ result.total_robot_rank }}</strong></td>
+        <td><strong>{{ result.robot.robot_name }} ({{ result.robot.country }})</strong></td>
+        <td>{{ result.total_robot_points }}</td>
+        <td>{{ result.total_opponent_points }}</td>
+        <td>{{ result.round_robot_points }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

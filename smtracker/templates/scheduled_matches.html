@@ -1,0 +1,38 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Scheduled Matches for Round {{ round.ident }}</h1>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Table</th>
+        <th>Match</th>
+        <th>Scheduled Time</th>
+        <th>Robot 1</th>
+        <th>Robot 2</th>
+        <th>Robot 1 Points</th>
+        <th>Robot 2 Points</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for match in matches %}
+        <tr>
+          <td>{{ match.schedule_table|default_if_none:'' }}</td>
+          <td>{{ match.ident }}</td>
+          <td>{{ match.schedule_time|date:"Y-m-d H:i" }}</td>
+          <td>{{ match.robot1.robot_name }} ({{ match.robot1.country }})</td>
+          <td>{{ match.robot2.robot_name }} ({{ match.robot2.country }})</td>
+          <td>{{ match.result_robot1_points|default_if_none:'' }}</td>
+          <td>{{ match.result_robot2_points|default_if_none:'' }}</td>
+          <td>{{ match.status }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="8">No scheduled matches for this round.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <title>{% block title %}Sumo Match Tracker{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'smtracker:robot_registration_edit' %}">Robots</a>
+            <a href="{% url 'smtracker:round_list' %}">Rounds</a>
+        </nav>
+    </header>
+
+    <main>
+        {% if messages %}
+            <h2>Messages</h2>
+            <ul style="color: green;">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sumo Match Tracker</p>
+    </footer>
+</body>
+</html>

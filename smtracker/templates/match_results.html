@@ -1,0 +1,43 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Results for Round: {{ round.ident }}</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    
+    {{ formset.management_form }}
+
+    <table>
+      <thead>
+        <tr>
+          <th>Table</th>
+          <th>Match</th>
+          <th>Time</th>
+          <th>Robot 1</th>
+          <th>Robot 2</th>
+          <th>Robot 1 Points</th>
+          <th>Robot 2 Points</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for form in formset %}
+          {{ form.id }}
+          <tr>
+            <td><strong>T{{ form.instance.schedule_table }}<strong></td>
+            <td><strong>{{ form.instance.ident }}</strong></td>
+            <td>{{ form.instance.schedule_time|date:"Y-m-d H:i" }}</td>
+            <td>{{ form.instance.robot1 }}</td>
+            <td>{{ form.instance.robot2 }}</td>
+            <td>{{ form.result_robot1_points }}</td>
+            <td>{{ form.result_robot2_points }}</td>
+            <td>{{ form.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <button type="submit">Save Results</button>
+  </form>
+{% endblock %}

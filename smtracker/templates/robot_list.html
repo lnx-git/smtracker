@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Robot List</h1>
+    <ul>
+        {% for robot in robots %}
+            <li>{{ robot.registration_number }}. Robot <strong>{{ robot.robot_name }}</strong> ({{ robot.author_name }}) {{ robot.city }}, {{ robot.country }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

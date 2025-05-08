@@ -1,0 +1,44 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Robot Registration Data</h1>
+  <form method="POST">
+    {% csrf_token %}
+
+    {{ formset.management_form }}
+
+    <table border="1" cellpadding="4" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Registration #</th>
+          <th>Robot Name</th>
+          <th>City</th>
+          <th>Country</th>
+          <th>Robot Kit Type</th>
+          <th>Robot Type (A, B, C)</th>
+          <th>Weight (g)</th>
+          <th>Byebot Points (0,1,2)</th>
+          <th>Qualified G1 (0, 1)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for form in formset %}
+          {{ form.id }}
+          <tr>
+            <td><strong>{{ form.instance.registration_number }}</strong></td>
+            <td><strong>{{ form.instance.robot_name }}</strong></td>
+            <td>{{ form.instance.city }}</td>
+            <td>{{ form.instance.country }}</td>
+            <td>{{ form.robot_kit_type }}</td>
+            <td>{{ form.robot_type }}</td>
+            <td>{{ form.weight }}</td>
+            <td>{{ form.byebot_points }}</td>
+            <td>{{ form.round_group1_qualified }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <button type="submit">Save Changes</button>
+  </form>
+{% endblock %}
