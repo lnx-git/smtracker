@@ -16,4 +16,6 @@ http://127.0.0.1:8000/smtracker/
 
 http://127.0.0.1:8000/admin/
 
+username: admin, password: sumo1234
+
 ![Django Admin](docs/img/smtracker4.png)
