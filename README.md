@@ -13,4 +13,4 @@ http://127.0.0.1:8000/smtracker/
 
 http://127.0.0.1:8000/admin/
 
-![Django Admin](docs/img/smtracker3.png)
+![Django Admin](docs/img/smtracker4.png)
